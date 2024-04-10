@@ -1,0 +1,70 @@
+{
+  "name": "markdown-image-to-base64",
+  "displayName": "markdown-image-to-base64",
+  "description": "export/import markdown to markdown width base64 image",
+  "version": "0.0.1",
+  "publisher": "pandaWuCullen",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:markdown-image-to-base64.export",
+    "onLanguage:markdown"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.markdown-image-to-base64.export",
+        "title": "导出markdown(图片转为base64)",
+        "group": "markdown-image-to-base64"
+      },
+      {
+        "command": "extension.markdown-image-to-base64.recovery",
+        "title": "恢复(将base64恢复为图片链接)",
+        "group": "markdown-image-to-base64"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.markdown-image-to-base64.export"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.markdown-image-to-base64.recovery"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.markdown-image-to-base64.export",
+          "group": "markdown-image-to-base64"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.markdown-image-to-base64.recovery",
+          "group": "markdown-image-to-base64"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "yarn run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.88.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
